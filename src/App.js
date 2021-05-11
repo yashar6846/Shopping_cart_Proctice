@@ -6,9 +6,9 @@ import Products from "./Component/Products";
 function App() {
   return (
     <div>
-      <Cart />
       <Manu />
       <Products />
+      <Cart />
     </div>
   );
 }
