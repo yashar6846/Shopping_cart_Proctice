@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import {
   Container,
   ProductContainer,
@@ -7,20 +7,22 @@ import {
   TextBody,
   Title,
   Price,
+  Button,
 } from "./styled";
 
-const Product = (props) => {
+const Product = ({ product, addToCart }) => {
   return (
     <ProductContainer>
       <div>
-        <Image src={props.image} alt={props.name} />
+        <Image src={product.image} alt={product.name} />
       </div>
       <TextBody>
-        <Description>{props.description}</Description>
-        <Title>{props.name}</Title>
+        <Description>{product.description}</Description>
+        <Title>{product.name}</Title>
       </TextBody>
       <div>
-        <Price>${props.price}</Price>
+        <Price>${product.price}</Price>
+        <Button onClick={() => addToCart(product)}>Bay</Button>
       </div>
     </ProductContainer>
   );

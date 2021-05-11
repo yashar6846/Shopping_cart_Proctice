@@ -3,16 +3,10 @@ import Product from "./Product";
 import { mockData } from "../Data/mokData";
 import { Container } from "./styled";
 
-const Products = (props) => {
+const Products = ({ addToCart }) => {
   const Data = mockData;
   const productsComponent = Data.map((product) => (
-    <Product
-      key={product.id}
-      name={product.name}
-      description={product.description}
-      image={product.image}
-      price={product.price}
-    />
+    <Product key={product.id} addToCart={addToCart} product={product} />
   ));
   return <Container>{productsComponent}</Container>;
 };
