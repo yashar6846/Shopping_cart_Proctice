@@ -1,7 +1,12 @@
 import React from "react";
+import CartItem from "./CartItem";
+import { Container } from "./styled";
 
-function Cart() {
-  return <div>Cart</div>;
-}
+const Cart = ({ cart, removeFromCart }) => {
+  const cartItems = cart.map((item) => (
+    <CartItem key={item.id} product={item} removeFromCart={removeFromCart} />
+  ));
+  return <Container>{cartItems}</Container>;
+};
 
 export default Cart;
