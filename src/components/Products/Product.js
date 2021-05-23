@@ -1,6 +1,5 @@
-// import React from "react";
+import React from "react";
 import {
-  Container,
   ProductContainer,
   Description,
   Image,
@@ -9,20 +8,21 @@ import {
   Price,
   Button,
 } from "./styled";
+import emptyImage from "../../resources/images/empty.jpeg";
 
 const Product = ({ product, addToCart }) => {
   return (
     <ProductContainer>
       <div>
-        <Image src={product.image} alt={product.name} />
+        <Image src={product.image || emptyImage} alt={product.name} />
       </div>
       <TextBody>
-        <Description>{product.description}</Description>
         <Title>{product.name}</Title>
+        <Description>{product.description}</Description>
       </TextBody>
       <div>
         <Price>${product.price}</Price>
-        <Button onClick={() => addToCart(product)}>Bay</Button>
+        <Button onClick={() => addToCart(product)}>Buy</Button>
       </div>
     </ProductContainer>
   );

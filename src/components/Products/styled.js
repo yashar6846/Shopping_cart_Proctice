@@ -1,35 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flexbox;
+  display: flex;
   flex-wrap: wrap;
 `;
 
-export const Image = styled.img`
-  width: 50px;
-  height: 50px;
-`;
-export const TextBody = styled.div`
-  margin: 0 15px;
-`;
-export const Title = styled.h3`
-  font-size: 24px;
-`;
-export const Description = styled.h5`
-  font-size: 15px;
-`;
-export const Price = styled.div`
-  font-size: 15px;
-`;
-export const Button = styled.button`
-  border-radius: 5px;
-  background-color: #2245dd;
-  color: white;
-  padding: 5px 10px;
-  &:hover {
-    background-color: #554599;
-  }
-`;
 export const ProductContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -39,4 +14,35 @@ export const ProductContainer = styled.div`
   border-radius: 5px;
   width: 350px;
   margin: 15px;
+`;
+
+export const Image = styled.img`
+  /* width: 150px; */
+  width: 100px; height: 100px;
+`;
+
+export const TextBody = styled.div`
+  margin: 0 15px;
+`;
+
+export const Title = styled.h3`
+  font-size: 24px;
+`;
+
+export const Description = styled.h5`
+  font-size: 12px;
+`;
+
+export const Price = styled.div`
+  font-size: 20px;
+`;
+
+export const Button = styled.button`
+  border-radius: 5px;
+  background-color: #2245dd;
+  color: white;
+  padding: 5px 10px;
+  &:hover {
+    background-color: #557799;
+  }
 `;

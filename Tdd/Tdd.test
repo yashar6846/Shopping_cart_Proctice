@@ -1,0 +1,91 @@
+import React from "react";
+import { shallow } from "enzyme";
+import App from "./App";
+// import Counter from "./Counter";
+const setup = (props = {}, state = null) => {
+  const wrapper = shallow(<App {...props} />);
+  if (state) wrapper.setState(state);
+
+  return wrapper;
+};
+
+const findByTestAttr = (wrapper, val) => {
+  return wrapper.find(`[data-test='${val}']`);
+};
+const wrapper = setup();
+
+describe("App component", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<App />);
+  });
+
+  test("should render app component", () => {
+    const appComponent = wrapper.find("[data-test='app']").length;
+    expect(appComponent).toBe(1);
+  });
+  test("should render increment button ", () => {
+    const incrementBtn = wrapper.find("[data-test='increment']").length;
+    expect(incrementBtn).toBe(1);
+    // expect(appComponent).toBe(1);
+  });
+  test("should render decrement button ", () => {
+    const decrementBtn = wrapper.find("[data-test='decrement']").length;
+    expect(decrementBtn).toBe(1);
+  });
+
+  test("counter start at 0", () => {
+    const initialCounterState = wrapper.state("counter");
+    expect(initialCounterState).toBe();
+  });
+
+  test("increment button should work", () => {
+    const counter = 7;
+    const app = setup(null, { counter });
+
+    const btn = findByTestAttr(app, "increment");
+    btn.simulate("click");
+
+    const counterDisplay = findByTestAttr(app, "counter-display");
+    expect(counterDisplay.text()).toContain(counter + 1);
+  });
+  test("decrement button should work", () => {
+    const counter = 7;
+    const app = setup(null, { counter });
+
+    const btn = findByTestAttr(app, "decrement");
+    btn.simulate("click");
+
+    const counterDisplay = findByTestAttr(app, "counter-display");
+    expect(counterDisplay.text()).toContain(counter - 1);
+  });
+});
+//////////////////App.js
+import { Component } from "react";
+export default class App extends Component {
+  state = { counter: 0 };
+  state = { n: 0 };
+  increment = () => {
+    this.setState({ counter: this.state.counter + 1 });
+  };
+
+  decrement = () => {
+    this.setState({ counter: this.state.counter - 1 });
+  };
+
+  render() {
+    return (
+      <div data-test="app">
+        <h1 data-test="counter-display">{this.state.counter}</h1>
+        <br />
+        <button data-test="increment" onClick={this.increment}>
+          Increment
+        </button>
+        <button data-test="decrement" onClick={this.decrement}>
+          Decrement
+        </button>
+      </div>
+    );
+  }
+}
+/////////////////////////////
